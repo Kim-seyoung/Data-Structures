@@ -1,4 +1,3 @@
-// 4번 201811163 김세영 Windows
 #include <stdio.h>
 
 int main()

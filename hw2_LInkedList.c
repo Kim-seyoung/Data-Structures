@@ -1,4 +1,4 @@
-// 201811163 / ±è¼¼¿µ / Windows
+// 201811163 / ê¹€ì„¸ì˜ / Windows
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -37,29 +37,29 @@ void InsertInLinkedList(struct ListNode** h, int data, int position)
 	int k = 0;
 	struct ListNode* p, * q, * newNode;
 	newNode = (ListNode*)malloc(sizeof(struct ListNode));
-	if (!newNode) { // Ç×»ó ¸Ş¸ğ¸® ¿¡·¯¸¦ È®ÀÎÇØ¾ß ÇÑ´Ù.
+	if (!newNode) { // í•­ìƒ ë©”ëª¨ë¦¬ ì—ëŸ¬ë¥¼ í™•ì¸í•´ì•¼ í•œë‹¤.
 		printf("Memory Error");
 		return;
 	}
 	newNode->data = data;
 	p = *h; q = NULL;
-	if (position == 0 || *h == NULL) // °¡Àå Ã³À½¿¡ ³ëµå¸¦ Ãß°¡ÇÑ´Ù.  ºó ListÀÏ¶§µµ
+	if (position == 0 || *h == NULL) // ê°€ì¥ ì²˜ìŒì— ë…¸ë“œë¥¼ ì¶”ê°€í•œë‹¤.  ë¹ˆ Listì¼ë•Œë„
 	{
 		newNode->next = p;
 		*h = newNode;
 	}
-	else // p´Â position + 1 ±îÁö, q´Â position ±îÁö ÁøÇàÇÑ´Ù. (position : 3 = index : 3 = 4¹øÂ°)
+	else // pëŠ” position + 1 ê¹Œì§€, qëŠ” position ê¹Œì§€ ì§„í–‰í•œë‹¤. (position : 3 = index : 3 = 4ë²ˆì§¸)
 	{
 		while ((p != NULL) && (k < position)) {
 			k++;
 			q = p;
 			p = p->next;
 		}
-		if (p == NULL) { // °¡Àå ³¡¿¡ ³ëµå¸¦ Ãß°¡ÇÑ´Ù.
+		if (p == NULL) { // ê°€ì¥ ëì— ë…¸ë“œë¥¼ ì¶”ê°€í•œë‹¤.
 			q->next = newNode;
 			newNode->next = NULL;
 		}
-		else { // Áß°£¿¡ ³ëµå¸¦ Ãß°¡ÇÑ´Ù.
+		else { // ì¤‘ê°„ì— ë…¸ë“œë¥¼ ì¶”ê°€í•œë‹¤.
 			newNode->next = p;
 			q->next = newNode;
 		}
@@ -75,27 +75,27 @@ void DeleteNodeFromLinkedList(struct ListNode** h, int position)
 		return;
 	}
 	p = *h; q = NULL;
-	if (position == 0) { // ¸®½ºÆ® °¡Àå ¸Ç ¾ÕÀÇ ³ëµå¸¦ »èÁ¦ÇÏ´Â °æ¿ì
+	if (position == 0) { // ë¦¬ìŠ¤íŠ¸ ê°€ì¥ ë§¨ ì•ì˜ ë…¸ë“œë¥¼ ì‚­ì œí•˜ëŠ” ê²½ìš°
 		*h = p->next;
 		free(p);
 		return;
 	}
-	else { // »èÁ¦ÇÒ À§Ä¡±îÁö ¸®½ºÆ® Å½»öÇÏ±â
-		while ((p != NULL) && (k < position)) { // (p != NULL) ¾øÀ¸¸é?? = »èÁ¦ÇÒ ¸®½ºÆ® ÀÚÃ¼°¡ ¾ø´Ù
+	else { // ì‚­ì œí•  ìœ„ì¹˜ê¹Œì§€ ë¦¬ìŠ¤íŠ¸ íƒìƒ‰í•˜ê¸°
+		while ((p != NULL) && (k < position)) { // (p != NULL) ì—†ìœ¼ë©´?? = ì‚­ì œí•  ë¦¬ìŠ¤íŠ¸ ìì²´ê°€ ì—†ë‹¤
 			k++;
 			q = p;
 			p = p->next;
 		}
-		if (p == NULL) // ¸®½ºÆ®¿¡ ¾ø´Â Ç×¸ñÀ» »èÁ¦ÇÏ´Â °æ¿ì
+		if (p == NULL) // ë¦¬ìŠ¤íŠ¸ì— ì—†ëŠ” í•­ëª©ì„ ì‚­ì œí•˜ëŠ” ê²½ìš°
 			printf("Position does not exist.");
-		else { // ¸®½ºÆ® Áß°£ ¶Ç´Â ¸Ç³¡À» »èÁ¦ÇÏ´Â °æ¿ì
+		else { // ë¦¬ìŠ¤íŠ¸ ì¤‘ê°„ ë˜ëŠ” ë§¨ëì„ ì‚­ì œí•˜ëŠ” ê²½ìš°
 			q->next = p->next;
 			free(p);
 		}
 	}
 }
 
-void DeleteLinkedList(struct ListNode** h) { // LinkedList ÀüÃ¼ »èÁ¦
+void DeleteLinkedList(struct ListNode** h) { // LinkedList ì „ì²´ ì‚­ì œ
 	struct ListNode *nextNode, *iterator;
 	iterator = *h;
 	while (iterator) {
@@ -103,7 +103,7 @@ void DeleteLinkedList(struct ListNode** h) { // LinkedList ÀüÃ¼ »èÁ¦
 		free(iterator);
 		iterator = nextNode;
 	}
-	*h = NULL; // Caller ÇÔ¼öÀÇ 'head'Æ÷ÀÎÅÍ¸¦ updateÇØ ÁÖ±â À§ÇØ
+	*h = NULL; // Caller í•¨ìˆ˜ì˜ 'head'í¬ì¸í„°ë¥¼ updateí•´ ì£¼ê¸° ìœ„í•´
 }
 
 int main(void) {
@@ -117,7 +117,7 @@ int main(void) {
 	int sum = 0, index;
 	srand(time(NULL));
 
-	// 1 - (1) : Insert ÃøÁ¤
+	// 1 - (1) : Insert ì¸¡ì •
 	start = clock();
 
 	for (int i = 0; i < SIZE; i++) {
@@ -139,11 +139,11 @@ int main(void) {
 	printf("Random access for read Time(LinkedList): %d millisec\n", end - start);
 	printf("sum = %d\n\n\n", sum);
 
-	// 1 - (4) : Random access for deletion
+	// 1 - (3) : Random access for deletion
 	start = clock();
 
 	for (int i = 0; i < SIZE; i++) {
-		index = rand() * 10 % (SIZE - i); // index °¹¼ö°¡ ÇÏ³ª¾¿ ÁÙ¾îµê.
+		index = rand() * 10 % (SIZE - i); // index ê°¯ìˆ˜ê°€ í•˜ë‚˜ì”© ì¤„ì–´ë“¦.
 		DeleteNodeFromLinkedList(&head, index);
 	}
 
